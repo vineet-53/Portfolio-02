@@ -1,19 +1,10 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-  console.log("development mode");
-}
-const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const url = process.env.DB_URL;
-const db = mongoose.connection;
+const db = require('./configs/db')
+const PORT  =process.env.PORT || 8000;
 const router = require("./router/root");
-const expressLayouts = require("express-ejs-layouts");
 const expressEjsLayouts = require("express-ejs-layouts");
-// database
-mongoose.connect(url);
-db.on("error", () => console.log("error connecting to database"));
-db.once("open", () => console.log("Database connected Successfully"));
+db.connect()
 // static
 app.use("/", express.static("public"));
 
@@ -28,4 +19,7 @@ app.set("/views", __dirname + "/views");
 app.use("/", router);
 
 //=======================================
-app.listen(process.env.PORT || 8000);
+app.listen(PORT , ( err) => { 
+  console.log("Server started at port", PORT)
+
+});
