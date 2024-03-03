@@ -3,17 +3,7 @@
 I crafted this portfolio at the outset of my MERN Stack journey, utilizing it as a practice project to enhance and refine my skills.
 
 
-## Installation
 
-Install my-project with npm
-
-```bash
-  git clone ....
-  npm install my-project
-  cd my-project
-  npm install 
-  npm run dev
-```
     
 ## Tech Stack Used
 - HTML 
